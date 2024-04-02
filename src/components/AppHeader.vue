@@ -19,13 +19,16 @@ export default {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <RouterLink to="/" class="nav-link" aria-current="page">Home</RouterLink>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Progetti</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profilo Personale</a>
+                        <a class="nav-link" href="#">Profilo</a>
+                    </li>
+                    <li class="nav-item">
+                        <RouterLink to="/contact-us" class="nav-link">Contattami</RouterLink>
                     </li>
                 </ul>
             </div>

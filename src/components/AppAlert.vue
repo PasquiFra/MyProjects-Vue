@@ -9,8 +9,7 @@ export default {
 </script>
 
 <template>
-    {{ console.log(this.hasAlert) }}
-    <div v-if="hasAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div v-if="hasAlert" class="alert alert-danger alert-dismissible fade show m-4" role="alert">
         <h4>Si è verificato un errore!</h4>
         <p>Che ne dici di fare un altro tentativo?
             <strong class="text-decoration-underline" role="button" @click="$emit('retry')">Riprova</strong>
