@@ -23,7 +23,7 @@ export default {
       this.isLoading = true
       axios.get(endpoint)
         .then(res => {
-          this.projects = res.data['0']['projects']
+          this.projects = res.data['0']['projects']['data'];
           this.hasAlert = false;
         })
         .catch(err => {
