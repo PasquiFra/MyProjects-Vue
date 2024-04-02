@@ -2,19 +2,21 @@
 
 export default {
     name: 'Boolfolio | Alert',
-    props: { show: Boolean },
+    props: { hasAlert: Boolean },
     emits: ['close', 'retry']
+
 }
 </script>
 
 <template>
-    <div v-if="show" class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ console.log(this.hasAlert) }}
+    <div v-if="hasAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
         <h4>Si è verificato un errore!</h4>
         <p>Che ne dici di fare un altro tentativo?
-            <strong class="text-decoration-underline" role="button" :click="$emit('retry')">Riprova</strong>
+            <strong class="text-decoration-underline" role="button" @click="$emit('retry')">Riprova</strong>
         </p>
         <hr>
-        <button class="btn btn-light" type="button" :click="$emit('close')">Chiudi</button>
+        <button class="btn btn-light" type="button" @click="$emit('close')">Chiudi</button>
     </div>
 </template>
 

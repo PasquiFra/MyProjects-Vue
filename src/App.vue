@@ -23,7 +23,7 @@ export default {
       this.isLoading = true
       axios.get(endpoint)
         .then(res => {
-          this.projects = res.data['0']['projects']['data'];
+          this.projects = res.data['data'];
           this.hasAlert = false;
         })
         .catch(err => {
@@ -33,7 +33,7 @@ export default {
         .then(() => { this.isLoading = false })
     }
   },
-  created() {
+  mounted() {
     this.fetchProjects();
   }
 };
@@ -42,7 +42,7 @@ export default {
 <template>
   <AppHeader />
   <main class="container">
-    <AppAlert :show="hasAlert" @close="hasAlert = false" @retry="fetchProjects" />
+    <AppAlert :hasAlert="hasAlert" @close="hasAlert = false" @retry="fetchProjects" />
     <AppLoader v-if="isLoading" />
     <AppMain :projects="projects" v-else />
   </main>
