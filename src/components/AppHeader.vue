@@ -22,13 +22,10 @@ export default {
                         <RouterLink to="/" class="nav-link" aria-current="page">Home</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Progetti</a>
+                        <RouterLink to="/projects" class="nav-link" aria-current="page">Progetti</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profilo</a>
-                    </li>
-                    <li class="nav-item">
-                        <RouterLink to="/contact-us" class="nav-link">Contattami</RouterLink>
+                        <RouterLink to="/profile" class="nav-link">Profilo</RouterLink>
                     </li>
                 </ul>
             </div>

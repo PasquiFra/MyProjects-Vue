@@ -14,19 +14,15 @@ export default {
 
 <template>
 
-    <div class="card my-3">
-        <ul class="w-100">
-            <li class="w-100 project">
-                <a href="#">
-                    <h3 class="text-center" v-text="project.title"></h3>
-                    <p class="text-center my-3 mt-5">{{ abstract }}</p>
-                    <div class="p-3">
-                        Vai a GitHub:<a href="#" class="link">{{ project.project_url }}</a>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
+    <li class="w-100 project">
+        <RouterLink to="/project" class="nav-link">
+            <h3 class="text-center" v-text="project.title"></h3>
+            <p class="text-center my-3 mt-5">{{ abstract }}</p>
+            <div class="p-3">
+                Vai a GitHub:<a href="#" class="link">{{ project.project_url }}</a>
+            </div>
+        </RouterLink>
+    </li>
 
 </template>
 
