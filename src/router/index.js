@@ -11,7 +11,7 @@ export default createRouter({
     routes: [
         { path: '/', component: HomePage },
         { path: '/profile', component: ProfilePage },
-        { path: '/project', component: ShowProjectPage },
+        { path: '/projects/:slug', name: 'show-project', component: ShowProjectPage },
         { path: '/projects', component: ProjectsPage },
         { path: '/:pathMatch(.*)*', component: NotFoundPage },
     ]

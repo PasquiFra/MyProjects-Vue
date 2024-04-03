@@ -1,22 +1,58 @@
 <script>
+import AppLoader from '../AppLoader.vue';
+import AppAlert from '../AppAlert.vue';
+import ProjectCard from '../ProjectCard.vue';
+import axios from 'axios';
+
+const baseUri = 'http://localhost:8000/api/projects/'
 
 export default {
-    name: 'Progetto',
+    name: 'ShowProject',
     components: {
-
+        AppLoader, AppAlert, ProjectCard
     },
-    props: { project: Object },
+    data: () => ({
+        project: '',
+        isLoading: false,
+        hasAlert: false
+    }),
+    methods: {
+        fetchProjects() {
+            this.isLoading = true;
+            const slug = this.$route.params.slug;
+            const endpoint = baseUri + slug;
+            axios.get(endpoint)
+                .then(res => {
+                    this.project = res.data['data'];
+                    this.hasAlert = false;
+                })
+                .catch(err => {
+                    console.error(err);
+                    this.hasAlert = true;
+                })
+                .then(() => { this.isLoading = false })
+        }
+    },
+    mounted() {
+        this.fetchProjects();
+    }
 }
 </script>
 
 <template>
-    <div class="container">
-        <h5 class="text-center py-2">Progetto ID-{{ project.id }}</h5>
+
+    <AppAlert :hasAlert="hasAlert" @close="hasAlert = false" @retry="fetchProjects" />
+    <AppLoader v-if="isLoading && !project" />
+
+    <div v-if="!isLoading && project" class="container">
+        <h1>dettaglio pagina</h1>
+        <!-- <ProjectCard :project="project" /> -->
+        <!-- <h5 class="text-center py-2">Progetto ID-{{ project.id }}</h5>
         <h3 class="text-center" v-text="project.title"></h3>
         <p class="text-center my-3 mt-5">{{ abstract }}</p>
         <div class="p-3">
             Vai a GitHub:<a href="#" class="link">{{ project.project_url }}</a>
-        </div>
+        </div> -->
     </div>
 </template>
 
