@@ -23,7 +23,7 @@ export default {
             const endpoint = baseUri + slug;
             axios.get(endpoint)
                 .then(res => {
-                    this.project = res.data['data'];
+                    this.project = res.data['0'];
                     this.hasAlert = false;
                 })
                 .catch(err => {
@@ -45,14 +45,12 @@ export default {
     <AppLoader v-if="isLoading && !project" />
 
     <div v-if="!isLoading && project" class="container">
-        <h1>dettaglio pagina</h1>
-        <!-- <ProjectCard :project="project" /> -->
-        <!-- <h5 class="text-center py-2">Progetto ID-{{ project.id }}</h5>
+        <h5 class="text-center py-2">Progetto ID-{{ project.id }}</h5>
         <h3 class="text-center" v-text="project.title"></h3>
-        <p class="text-center my-3 mt-5">{{ abstract }}</p>
+        <p class="text-center my-3 mt-5">{{ project.description }}</p>
         <div class="p-3">
             Vai a GitHub:<a href="#" class="link">{{ project.project_url }}</a>
-        </div> -->
+        </div>
     </div>
 </template>
 
