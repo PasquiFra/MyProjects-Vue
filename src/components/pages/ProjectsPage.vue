@@ -55,4 +55,9 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+ul {
+    margin: 0;
+    padding: 0;
+}
+</style>

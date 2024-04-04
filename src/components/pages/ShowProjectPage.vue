@@ -16,6 +16,22 @@ export default {
         isLoading: false,
         hasAlert: false
     }),
+    computed: {
+        pubblicationDate() {
+            const date = new Date(this.project.created_at);
+
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+
+            if (day < 10) day = '0' + day;
+            if (month < 10) month = '0' + month;
+
+            return `${day}/${month}/${year} alle ${hours}:${minutes}`
+        }
+    },
     methods: {
         fetchProjects() {
             this.isLoading = true;
@@ -48,9 +64,6 @@ export default {
         <h5 class="text-center py-2">Progetto ID-{{ project.id }}</h5>
         <h3 class="text-center" v-text="project.title"></h3>
         <p class="text-center my-3 mt-5">{{ project.description }}</p>
-        <div class="p-3">
-            Vai a GitHub: <a href="#" class="link">{{ project.project_url }}</a>
-        </div>
         <div>
             Tipologia:
             <span :style="{ 'background-color': project.type.color }" class="badge">{{ project.type.label }}</span>
@@ -62,6 +75,14 @@ export default {
                     {{ technology.label }}
                 </li>
             </ul>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div>
+                Vai a GitHub: <a href="#" class="link">{{ project.project_url }}</a>
+            </div>
+            <div>
+                Creato il: {{ pubblicationDate }}
+            </div>
         </div>
     </div>
 </template>

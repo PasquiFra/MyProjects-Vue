@@ -7,6 +7,21 @@ export default {
         abstract() {
             const abstract = this.project.description.slice(0, 150);
             return abstract + '...';
+        },
+
+        pubblicationDate() {
+            const date = new Date(this.project.created_at);
+
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+
+            if (day < 10) day = '0' + day;
+            if (month < 10) month = '0' + month;
+
+            return `${day}/${month}/${year} alle ${hours}:${minutes}`
         }
     }
 }
@@ -20,35 +35,19 @@ export default {
             <h3 class="text-center" v-text="project.title"></h3>
             <p class="text-center my-3 mt-5">{{ abstract }}</p>
         </RouterLink>
-        <div class="p-3">
-            Vai a GitHub:<a href="#" class="link">{{ project.project_url }}</a>
+        <div class="d-flex justify-content-between p-3">
+            <div>
+                Vai a GitHub: <a href="#" class="link">{{ project.project_url }}</a>
+            </div>
+            <div>
+                Creato il: {{ pubblicationDate }}
+            </div>
         </div>
     </li>
 
 </template>
 
 <style lang="scss" scoped>
-#go-to-project {
-
-    display: flex;
-    justify-content: center;
-    flex-grow: 0;
-    flex-shrink: 0;
-
-    h3 {
-        justify-self: center;
-    }
-
-    button {
-        justify-self: end;
-    }
-}
-
-ul {
-    margin: 0;
-    padding: 0;
-}
-
 li {
     list-style: none;
     margin: 25px 0;
