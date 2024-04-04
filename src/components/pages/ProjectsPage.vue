@@ -2,6 +2,7 @@
 import ProjectCard from '../ProjectCard.vue';
 import AppLoader from '../AppLoader.vue';
 import AppAlert from '../AppAlert.vue';
+import AppPagination from '../AppPagination.vue';
 import axios from "axios";
 
 const endpoint = 'http://localhost:8000/api/projects/'
@@ -9,19 +10,21 @@ const endpoint = 'http://localhost:8000/api/projects/'
 export default {
     name: 'Progetti',
     components: {
-        ProjectCard, AppLoader, AppAlert
+        ProjectCard, AppLoader, AppAlert, AppPagination
     },
     data: () => ({
         projects: [],
+        links: [],
         isLoading: false,
         hasAlert: false
     }),
     methods: {
-        fetchProjects() {
+        fetchProjects(local_url) {
             this.isLoading = true
-            axios.get(endpoint)
+            axios.get(local_url ?? endpoint)
                 .then(res => {
                     this.projects = res.data['data'];
+                    this.links = res.data['links'];
                     this.hasAlert = false;
                 })
                 .catch(err => {
@@ -52,6 +55,7 @@ export default {
             </ul>
         </div>
 
+        <AppPagination :links="links" @fetchPage="fetchProjects" />
     </div>
 </template>
 
