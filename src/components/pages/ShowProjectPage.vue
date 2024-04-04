@@ -49,7 +49,19 @@ export default {
         <h3 class="text-center" v-text="project.title"></h3>
         <p class="text-center my-3 mt-5">{{ project.description }}</p>
         <div class="p-3">
-            Vai a GitHub:<a href="#" class="link">{{ project.project_url }}</a>
+            Vai a GitHub: <a href="#" class="link">{{ project.project_url }}</a>
+        </div>
+        <div>
+            Tipologia:
+            <span :style="{ 'background-color': project.type.color }" class="badge">{{ project.type.label }}</span>
+        </div>
+        <div v-if="project.technologies">
+            Tecnologie:
+            <ul>
+                <li v-for="technology in project.technologies" :style="{ color: technology.color }">
+                    {{ technology.label }}
+                </li>
+            </ul>
         </div>
     </div>
 </template>
