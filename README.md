@@ -1,7 +1,12 @@
-# Vue 3 + Vite
+# My Projects - Laravel Api
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Introduzione 
+Questa applicazione raccoglie in un unico posto tutti i progetti di un utente e permette a chiunque di visualizzarli ed eventualmente contattare l'owner per chiedere ulteriori informazioni. 
 
-## Recommended IDE Setup
+## Interfaccia Backoffice 
+Nel backoffice è possibile effettuare l'accesso tramite login, l'utente sarà in grado di accedere ai propri lavori, visualizzarli, modificarli, renderli visibili al pubblico o impostarli come bozza, cancellarli se desiderato. 
+Una sezione "profilo personale" dove inserire le informazioni personali è disponibile.
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+## Interfaccia Frontend
+In questa pagina il visitatore è in grado di visualizzare le informazioni sull'owner dei progetti, vedere una lista di tutti i progetti da lui sviluppati, analizzarne il dettaglio ed eventualmente guardare il dettaglio del codice su gitHub se il link è disponibile. 
+E' possibile cercare il progetto con parole chiave tramite barra di ricerca oppure scorrendo la lista generale, per maggiori informazioni è possibile inviare un mail/form che sarà ricevuto direttamente dall'owner. 
